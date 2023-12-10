@@ -8,8 +8,9 @@ var majorityElement = function(nums) {
     let res = 0;
     let maxCount = 0;
     
-    for(let n of nums){
-        if(count[n]){
+    for(let i = 0; i < len; i++ ){
+        const n = nums[i];
+        if(count.hasOwnProperty(n)){
             count[n] = count[n] + 1;
             if(count[n] > maxCount){
                 res = n;
