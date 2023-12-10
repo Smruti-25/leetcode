@@ -3,26 +3,17 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    const len = nums.length;
-    const count = {};
-    let res = 0;
-    let maxCount = 0;
+    //boyre - moore majority
+    let count = 0;
+    let res;
     
-    for(let i = 0; i < len; i++ ){
+    for(let i = 0; i< nums.length; i++){
         const n = nums[i];
-        if(count.hasOwnProperty(n)){
-            count[n] = count[n] + 1;
-            if(count[n] > maxCount){
-                res = n;
-                maxCount = count[n];
-            }
-        } else {
-            count[n] = 1;
-            if(len === 1){
-                res = n;
-                maxCount = 1;
-            }
-        }
+        
+        if(count === 0){
+            res = n;
+        } 
+        (n === res ? count++ : count--);
     }
     return res;
 };
