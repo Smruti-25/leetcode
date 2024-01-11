@@ -3,23 +3,25 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    let res = false;
-    const stack = [];
-    const closedToOpen = { "]":"[", ")":"(", "}":"{" };
+    let validS = false;
+    const complements = {
+        "(":")",
+        "[":"]",
+        "{":"}"
+    };
     
-    for(let c of s){
-        if(c in closedToOpen) {
-             if(stack[stack.length - 1] === closedToOpen[c]){
-                 stack.pop();
-             } else {
-                 return false;
-             }
+    let res = [];
+    for(let i of s){
+        if(complements[i]){
+            res.push(i);
+        } else if(i === complements[res[res.length - 1]]){
+            res.pop();
         } else {
-            stack.push(c);
+            return false;
         }
     }
-    if(!stack.length){
-        res = true;
+    if(!res.length){
+            validS = true;
     }
-    return res;
+    return validS;
 };
