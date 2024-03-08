@@ -3,25 +3,13 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    let result = false;
-    let prevMap = {};
-    
-    for(let i of nums){
-        //check whether the element exists in the prevMap or not
-        if(prevMap[i]){
-            result = true;
+    const myset = new Set();
+    for(let n of nums){
+        if(myset.has(n)){
+            return true
+        } else {
+            myset.add(n);
         }
-        prevMap[i] = 1;
     }
-    
-    return result;
+    return false;
 };
-
-//dry run
-// i = 1, 2, 3
-// prevMap[1] ? = T
-// prevMap = {1: 1, 2:1, 3:1,  }
-// result = True
-    
-
-    
