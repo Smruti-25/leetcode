@@ -4,13 +4,14 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
-    if(s.length !== t.length)
+    if(s.length !== t.length){
         return false;
+    }
     
-    let count = {};
+    const count = {};
     
     for(let c of s){
-        count[c] = (count[c] || 0) + 1;
+        count[c] = (count[c] || 0 ) + 1;
     }
     
     for(let c of t){
@@ -19,4 +20,4 @@ var isAnagram = function(s, t) {
     }
     
     return true;
-};
+}
