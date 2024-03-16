@@ -1,14 +1,10 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        res = collections.defaultdict(list)
-        
-        for s in strs:
+        map = collections.defaultdict(list)
+        for word in strs:
             charCount = [0]*26
+            for char in word:
+                charCount[ord(char) - ord("a")] += 1
+            map[tuple(charCount)].append(word)
+        return map.values()
             
-            for c in s:
-                charCount[ord(c) - ord("a")] += 1
-            
-            #in python array cannot be a key in hashmap
-            res[tuple(charCount)].append(s)
-        
-        return res.values()
