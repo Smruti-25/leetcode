@@ -8,16 +8,15 @@ var isAnagram = function(s, t) {
         return false;
     }
     
-    const count = {};
-    
-    for(let c of s){
-        count[c] = (count[c] || 0 ) + 1;
+    let charCount = {};
+    for(let char of s){
+        charCount[char] = (charCount[char] || 0) + 1;
     }
-    
-    for(let c of t){
-        if(!count[c]) return false;
-        count[c]--;
+    for(let char of t){
+        if(!charCount[char]){
+            return false;
+        }
+        charCount[char]--;
     }
-    
     return true;
 }
